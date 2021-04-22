@@ -1,8 +1,9 @@
 """ 
-    Title: pysports_queries.py
-    Author: Professor Krasso
-    Date: 15 July 2020
-    Description: Test program for executing queries against the pysports database. 
+    Name:  Celeste Sila
+    Date:  April 21, 2021
+    Module:  8.2
+    Title: PySports: Table Queries
+    Description: Query MySQL database  
 """
 
 """ import statements """
@@ -21,38 +22,41 @@ config = {
 try:
     """ try/catch block for handling potential MySQL database errors """ 
 
-    db = mysql.connector.connect(**config) # connect to the pysports database 
+    # connect to pysports database 
+    db = mysql.connector.connect(**config) 
 
     cursor = db.cursor()
 
-    # select query from the team table 
+    # query team table 
     cursor.execute("SELECT team_id, team_name, mascot FROM team")
 
-    # get the results from the cursor object 
+    # get results 
     teams = cursor.fetchall()
 
+    # print teams label
     print("\n  -- DISPLAYING TEAM RECORDS --")
     
-    # iterate over the teams data set and display the results 
+    # iterate over teams data set and display results 
     for team in teams: 
         print("  Team ID: {}\n  Team Name: {}\n  Mascot: {}\n".format(team[0], team[1], team[2]))
 
-    # select query for the player table 
+    # query player table 
     cursor.execute("SELECT player_id, first_name, last_name, team_id FROM player")
 
-    # get the results from the cursor object 
+    # get the results 
     players = cursor.fetchall()
 
+    # print player label
     print ("\n  -- DISPLAYING PLAYER RECORDS --")
 
-    # iterate over the players data set and display the results
+    # iterate over players data set and display results
     for player in players:
         print("  Player ID: {}\n  First Name: {}\n  Last Name: {}\n  Team ID: {}\n".format(player[0], player[1], player[2], player[3]))
 
     input("\n\n  Press any key to continue... ")
 
+# error handling
 except mysql.connector.Error as err:
-    """ handle errors """
 
     if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
         print("  The supplied username or password are invalid")
@@ -64,6 +68,5 @@ except mysql.connector.Error as err:
         print(err)
 
 finally:
-    """ close the connection to MySQL """
-    
+    # close connection to MySQL    
     db.close()
