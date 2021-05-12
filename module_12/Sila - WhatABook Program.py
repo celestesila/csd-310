@@ -177,15 +177,15 @@ try:
                     #  output successful message  
                     print("\n\t\tBook id {} was successfully added to your wishlist.".format(book_id))
 
-                #  selection less than 0 or greater than 3 error 
-                if account_option < 0 or account_option > 3:
+                #  selection less than or equal to 0 or greater than 3 error 
+                if account_option <= 0 or account_option > 3:
                     print("\n\t***You have made an invalid selection.  Please try again.***")
 
                 #  display account menu 
                 account_option = show_account_menu()
         
-        #  selection is less than 0 or greater than 4 error
-        if user_selection < 0 or user_selection > 4:
+        #  selection is less than or equal to 0 or greater than 4 error
+        if user_selection <= 0 or user_selection > 4:
             print("\n***You have made an invalid selection.  Please try again.***")
             
         # display main menu
