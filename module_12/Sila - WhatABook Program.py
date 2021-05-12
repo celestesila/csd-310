@@ -60,7 +60,7 @@ def validate_user():
     try:
         user_id = int(input('\n\t--- MY ACCOUNT ---\n\n\tPlease enter your user id:\t'))
 
-        if user_id < 0 or user_id > 3:
+        if user_id <= 0 or user_id > 3:
                         
             print("\n\t***You have entered an invalid user id.  Please try again.***")
 
